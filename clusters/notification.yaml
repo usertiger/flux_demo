@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   type: slack
-  channel: general
+  channel: alert_usertiger
   secretRef:
     name: slack-url
 ---
@@ -21,6 +21,6 @@ spec:
   eventSeverity: info
   eventSources:
     - kind: GitRepository
-      name: '*'
+      name: 'https://github.com/usertiger/flux_demo.git'
     - kind: Kustomization
-      name: '*'
+      name: 'https://github.com/usertiger/flux_demo.git'
