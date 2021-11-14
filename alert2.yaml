@@ -19,7 +19,7 @@ data:
     receivers:
     - name: slack_prometheus
       slack_configs:
-      - api_url: https://hooks.slack.com/services/---webhook---
+      - api_url: https://hooks.slack.com/services/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
         channel: '#alert_usertiger'
         title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
         text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
