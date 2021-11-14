@@ -8,19 +8,21 @@ data:
   config.yml: |-
     global: {}
     route:
-      receiver: slack_prometheus
-      group_by: ['alertname', 'datacenter', 'app']
+      receiver: 'slack_prometheus'
+      group_by: ['alertname', 'priority']
       group_wait: 10s
-      repeat_interval: 1m
+      repeat_interval: 20s
       routes:
         - receiver: slack_prometheus
           match:
             severity: slack
+          group_wait: 10s
+          repeat_interval: 20s
     receivers:
     - name: slack_prometheus
       slack_configs:
       - api_url: https://hooks.slack.com/services/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
-        channel: '#alert_usertiger'
+        channel: '#notify_me'
         title: "{{ range .Alerts }}{{ .Annotations.summary }}\n{{ end }}"
         text: "{{ range .Alerts }}{{ .Annotations.description }}\n{{ end }}"
 ---
