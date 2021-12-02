@@ -1,0 +1,39 @@
+#- name: NGINX. Install packages
+#  apt:
+#    name: "{{ apt_nginx_packages }}"
+#    state: present
+#    update_cache: yes
+
+#- name: NGINX. Remove default site
+#  file:
+#    path: "/etc/nginx/sites-enabled/default"
+#    state: absent
+
+#- name: NGINX. Enable and start service
+#  service:
+#    name: nginx
+#    state: started
+#    enabled: yes
+
+- name: Install Nginx server Debian
+  apt: 
+    name: "{{ apt_http_packages }}" 
+    state: latest
+    update_cache: yes
+    
+- name: service enable & start debian
+  service: 
+    name: nginx
+    state: started
+    enabled: yes
+
+#- name: Enable firewall port debian
+#  firewalld:
+#    port: 80/tcp
+ #   permanent: yes
+ #   state: enabled
+
+#- name: Reload service firewall debian
+#  systemd:
+#    name: firewalld
+#    state: reloaded
